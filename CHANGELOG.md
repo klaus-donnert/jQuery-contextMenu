@@ -1,25 +1,62 @@
 ## Changelog ##
 
+### Unreleased
+
+#### Fixed
+
+* ContextMenu appears with wrong position ([Issue #502](https://github.com/swisnl/jQuery-contextMenu/issues/502) thanks @apptaro
+* Check if given selected value is a 0, if it is a zero so return it as is. Thanks @Falseee 
+* Events are never trigger when opening a contextMenu right after the other ([Issue #454](https://github.com/swisnl/jQuery-contextMenu/issues/454) thanks @kagant15
+
+### 2.4.4
+
+#### Fixed
+
+* trigger is sometimes called on undefined objects because of typecheck on null. thanks @andreasrosdal
+
+### 2.4.3
+
+#### Changed 
+
+* The inline style causes a Content Security Policy violation if style-src 'unsafe-inline' is not defined in the policy. [PR 498](https://github.com/swisnl/jQuery-contextMenu/pull/498) thanks @StealthDuck
+
+* Removed GPL license from the comment in the plugin. Was already removed everywhere else. Only MIT applies now.
+
+#### Added
+
+* Added SauceLabs tests for common browsers.
+
+### 2.4.2 ###
+ 
+### Fixed
+
+* Focus not set on content editable element when right clicking the second time ([Issue #482](https://github.com/swisnl/jQuery-contextMenu/issues/482)) 
+
+* `selectableSubMenu` broke disabling click menu (fixes ([Issue #493](https://github.com/swisnl/jQuery-contextMenu/issues/493))
+
 ### 2.4.1 ###
 
 #### Fixed
 
-* Quick fix for error in visible check ([Issue #484](https://github.com/swisnl/jQuery-contextMenu/issues/484)
+* Quick fix for error in visible check ([Issue #484](https://github.com/swisnl/jQuery-contextMenu/issues/484))
 
+#### Updated
+
+* Tweaked positioning of submenu ([Issue #387](https://github.com/swisnl/jQuery-contextMenu/issues/387))
 
 ### 2.4.0 ###
 
 #### Added
 
-* Selectable Sub Menus ([Issue #483](https://github.com/swisnl/jQuery-contextMenu/issues/483) thanks @zyuhel
+* Selectable Sub Menus ([Issue #483](https://github.com/swisnl/jQuery-contextMenu/issues/483)) thanks @zyuhel
 
 #### Fixed
 
-* The contextmenu shows even if all items are set to visible:false ([Issue #473](https://github.com/swisnl/jQuery-contextMenu/issues/473) 
+* The contextmenu shows even if all items are set to visible:false ([Issue #473](https://github.com/swisnlhttps://github.com/swisnl/jQuery-contextMenu/issues/482/jQuery-contextMenu/issues/473)) 
 
 #### Documentation
 
-* Update documentation to include demo for async promise fixes ([Issue #470](https://github.com/swisnl/jQuery-contextMenu/issues/470)
+* Update documentation to include demo for async promise fixes ([Issue #470](https://github.com/swisnl/jQuery-contextMenu/issues/470))
 
 ### 2.3.0 ###
 

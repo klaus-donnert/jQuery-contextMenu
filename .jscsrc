@@ -35,7 +35,9 @@
   "requireSpacesInFunctionExpression": {
     "beforeOpeningCurlyBrace": true
   },
-  "requireSpacesInsideParentheses": "all",
+  "requireSpacesInsideParentheses": {
+    "all": false
+  },
   "requireSpaceAfterKeywords": [
     "if",
     "else",
@@ -48,9 +50,9 @@
     "catch"
   ],
   "requireSpacesInsideObjectBrackets": "all",
-  "requireSpacesInsideBrackets": true,
+  "requireSpacesInsideBrackets": false,
   "requireSemicolons": true,
-  "requireSpacesInConditionalExpression": true,
+  "requireSpacesInConditionalExpression": false,
   "requireSpaceAfterBinaryOperators": true,
   "requireLineFeedAtFileEnd": true,
   "requireSpaceBeforeBinaryOperators": [
@@ -67,10 +69,7 @@
   "requireSpacesInNamedFunctionExpression": {
     "beforeOpeningCurlyBrace": true
   },
-  "requirePaddingNewLinesBeforeLineComments": true,
-  "requireCapitalizedComments": {
-    "inlined": true
-  },
+  "requirePaddingNewLinesBeforeLineComments": false,
   "validateLineBreaks": "LF",
 
   "disallowKeywords": [ "with" ],

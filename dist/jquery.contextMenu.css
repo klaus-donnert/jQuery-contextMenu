@@ -2,17 +2,17 @@
 /*!
  * jQuery contextMenu - Plugin for simple contextMenu handling
  *
- * Version: v2.4.1
+ * Version: v2.4.4
  *
  * Authors: Björn Brala (SWIS.nl), Rodney Rehm, Addy Osmani (patches for FF)
  * Web: http://swisnl.github.io/jQuery-contextMenu/
  *
- * Copyright (c) 2011-2016 SWIS BV and contributors
+ * Copyright (c) 2011-2017 SWIS BV and contributors
  *
  * Licensed under
  *   MIT License http://www.opensource.org/licenses/mit-license
  *
- * Date: 2016-12-09T17:38:42.656Z
+ * Date: 2017-04-03T15:28:34.264Z
  */
 @-webkit-keyframes cm-spin {
   0% {
@@ -54,8 +54,8 @@
   font-style: normal; 
   font-weight: normal;
 
-  src: url("font/context-menu-icons.eot?4tjfj");
-  src: url("font/context-menu-icons.eot?4tjfj#iefix") format("embedded-opentype"), url("font/context-menu-icons.woff2?4tjfj") format("woff2"), url("font/context-menu-icons.woff?4tjfj") format("woff"), url("font/context-menu-icons.ttf?4tjfj") format("truetype");
+  src: url("font/context-menu-icons.eot?596za");
+  src: url("font/context-menu-icons.eot?596za#iefix") format("embedded-opentype"), url("font/context-menu-icons.woff2?596za") format("woff2"), url("font/context-menu-icons.woff?596za") format("woff"), url("font/context-menu-icons.ttf?596za") format("truetype");
 }
 
 .context-menu-icon-add:before {
@@ -211,6 +211,7 @@
 }
 
 .context-menu-input.context-menu-hover {
+  color: #2f2f2f; 
   cursor: default;
 }
 
