@@ -8,6 +8,7 @@ currentMenu: options
 
 
 - [Register new contextMenu](#register-new-contextmenu)
+- [Update contextMenu state](#update-contextmenu-state)
 - [Options (at registration)](#options-at-registration)
   - [selector](#selector)
   - [items](#items)
@@ -36,6 +37,15 @@ To register a new contextMenu:
 
 ```javascript
 $.contextMenu( options );
+```
+
+## Update contextMenu state
+
+It is possible to refresh the state of the contextmenu [disabled](https://swisnl.github.io/jQuery-contextMenu/docs/items.html#disabled), [visibility](https://swisnl.github.io/jQuery-contextMenu/docs/items.html#visible), [icons](https://swisnl.github.io/jQuery-contextMenu/docs/items.html#icon) and [input values](https://swisnl.github.io/jQuery-contextMenu/docs/items.html#type) through the `update` command. This will reevaluate any custom callbacks. 
+
+```javascript
+$('.context-menu-one').contextMenu('update'); // update single menu
+$.contextMenu('update') // update all open menus
 ```
 
 ## Options (at registration)
@@ -111,6 +121,7 @@ Value | Description
 `right` | Right mouse button
 `left` | Left mouse button
 `hover` | Hover the element
+`touchstart` | Touchstart only
 `none` | No trigger
 
 #### Example
@@ -127,6 +138,12 @@ $.contextMenu({
     trigger: 'hover'
 });
 ```
+
+### hideOnSecondTrigger
+
+Flag denoting if a second trigger should close the menu, as long as the trigger happened on one of the trigger-element's child nodes.  This overrides the reposition option.
+            
+`hideOnSecondTrigger`: `boolean` default: `false`
 
 ### selectableSubMenu
  
@@ -290,8 +307,10 @@ A reference to the current options object is passed, the options object is a col
 
 Value | Description
 ---- | ---- 
-`events.show` | Called before show of the contextmenu 
+`events.preShow` | Called before show of the contextmenu, when returning false default browser context menu is shown
+`events.show` | Called on show of the contextmenu 
 `events.hide` | Called before hide of the contextmenu
+`events.activated` | Called after activation of the contextmenu
 
 #### Example
 ```javascript
@@ -316,6 +335,11 @@ $.contextMenu({
            } else {
                // Prevent the menu to be hidden.
                return false;
+           }            
+       },
+       activated : function(options){
+               if( confirm('Hide menu with selector ' + options.selector + '?') === true ){
+               console.log('Menu Activated');
            }            
        }
 });

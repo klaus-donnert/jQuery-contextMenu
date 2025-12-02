@@ -1,35 +1,45 @@
-language: php
-
 sudo: false
+
+cache:
+  directories:
+    - node_modules
+
 env:
   global:
     - GIT_NAME: "'Couscous auto deploy'"
     - GIT_EMAIL: couscous@couscous.io
     - GH_REF: github.com/swisnl/jQuery-contextMenu
     - SAUCE_USERNAME: "bbrala-contextmenu"
-    - secure: XaE2bPODLwmzaNAKv9pA8mMiXJc8OrpyrO5tIGuOCwfQ+q7hx6Xa/tTcyn5+H2g+xYyJ0Qqv5+SDkDxbbgaVJLR1VEW15KEcZbD/3speqkg+yIC/oFxgbf1Ib01f0FowR2cw4/5Y2XzCM8CU7UxOLFGBDDCvM39Ab3UUl4uB/8g=
+    # GH_TOKEN
+    - secure: gWIh9j5sUgVn9DmVDYnmS4OT2GhHmsndLTPKRLgAF8LM4sa65SkSCNB4Xu5drcb1a6e4egOe0bXNgXSl70ApBoQIxPvjvWxLBCjPQBPD6kJjo2ovOsfxLARMSGAqlGN7hiocLi+s8qa7RP3uuJ373z+Ge+bLIV6vFxEjK9U3Iz4=
+    # SAUCE_ACCESS_KEY
     - secure: UOse3txRLxLQKsPVQf6OKZZP3c0nLaPJ+4G2vR/qJqBXCTTCQ84+9qx9ih/40FDFcjVXwabJsdn0EhkqDw4h50OGdc58V1UfSbk7g1RiuvvRakOPTK0J9h7bEkBPb7QQXCvAVfOZ81DN6l5lMjmH1tiC2T/h/MNOLHPXsbzXElg=
-
-cache:
-  directories:
-    - node_modules
-    - documentation/vendor
 
 matrix:
   include:
-    - env: JQUERY=1 php=5.5
-    - env: JQUERY=2 php=5.5
-    - env: JQUERY=3 php=5.5
-    - env: DOCUMENTATION=1 php=5.5
+    - language: node_js
+      node_js: "10"
+      env: JQUERY=1
+    - language: node_js
+      node_js: "10"
+      env: JQUERY=2
+    - language: node_js
+      node_js: "10"
+      env: JQUERY=3
+    - language: php
+      php: 7.4
+      env: DOCUMENTATION=1
   allow_failures:
-    - env: DOCUMENTATION=1 php=5.5
+    - env: DOCUMENTATION=1
 
 
 install:
-- if [ "$JQUERY" ] ; then nvm install 6 && npm install && npm install jquery@$JQUERY ; fi
+- if [ "$JQUERY" ] ; then yarn add jquery@$JQUERY ; fi
 - if [ "$DOCUMENTATION" ] ; then cd documentation && composer global require couscous/couscous ; fi
 
-script: if [ "$JQUERY" ] ; then npm test && npm run test-sauce ; else /home/travis/.composer/vendor/bin/couscous travis-auto-deploy --php-version=5.5 ; fi
+script:
+- if [ "$JQUERY" ] ; then yarn run test ; else /home/travis/.config/composer/vendor/bin/couscous travis-auto-deploy --php-version=7.4 ; fi
+- if [ "$JQUERY" ] && [ "$SAUCE_USERNAME" ] ; then yarn run test-sauce ; fi
 
 deploy:
   provider: npm
